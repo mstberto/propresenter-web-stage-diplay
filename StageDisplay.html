@@ -1,0 +1,205 @@
+<html>
+
+<head>
+    <title>Stage Display</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAIRlWElmTU0AKgAAAAgABQESAAMAAAABAAEAAAEaAAUA
+        AAABAAAASgEbAAUAAAABAAAAUgEoAAMAAAABAAIAAIdpAAQAAAABAAAAWgAAAAAAAABIAAAAAQAAAEgAAAABAAOgAQADAAAAAQABAACgAgAEAAAAAQAAABCgAwAEAAAAAQAAABAAA
+        AAAx28c8QAAAAlwSFlzAAALEwAACxMBAJqcGAAAAVlpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9Il
+        hNUCBDb3JlIDYuMC4wIj4KICAgPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4KICAgICAgPHJkZjpEZXNjcml
+        wdGlvbiByZGY6YWJvdXQ9IiIKICAgICAgICAgICAgeG1sbnM6dGlmZj0iaHR0cDovL25zLmFkb2JlLmNvbS90aWZmLzEuMC8iPgogICAgICAgICA8dGlmZjpPcmllbnRhdGlvbj4x
+        PC90aWZmOk9yaWVudGF0aW9uPgogICAgICA8L3JkZjpEZXNjcmlwdGlvbj4KICAgPC9yZGY6UkRGPgo8L3g6eG1wbWV0YT4KGV7hBwAAAudJREFUOBFlUl9Ik1EUPxtbIfjQsPkw2
+        UxZWwvbmNh8SBOpV42CQYEwQl8ESZAE2YugD4Ng6YMPewl7MhWlB5MgnO4f2zBcYJJbE92EdKkrdYnyffM7nXv356EO/L5z7nfP+Z177+8AFExGjgH6+/t15IYJPsL3IvzkR3p6eu
+        rIMyvnlxb8r16vd1IgOp1O9Pl8uLGxwREMBnF0dBRp77KyspKRl0xWYkKlUvlWp9M55ubmQKvVivF4XJ5Op2WIyNZoMpmkw8NDZW9vLwQCgWlieEZg9QCsc319Pe7t7V3E1tYkY90
+        11u0/hMNh6ejo6KK9vR0VCsUILy7eWYzFYvgltiYVCi3Y2vYAzXcaOElLSwuazWYe+/1+KZFI8Lzu7m49IxkeGhrCX9msAFCDD1sbcNrdiLdVgI8e23FmZgZtNht2dnbi/Pw8ajQa
+        zGQygtvtZoQuRuBbWVnGUCicpxh/Bqx4/hnw5YvneHr6B/OiyDsnk0nc2dnh8dLSUn51dZXFYTl9NNevqyGV3pW13SAGFGF3H+C3oAK5HOHb5iZ4PB72TlBVVQWDg4NA6shUKhWVg
+        oYRcLuqRPCnAL4mEQSpEd54XkMivgmiKILdbofx8XE4OzuDjo4OODk5ARkXEIAR7GezWdDUaNmRwGwASP3IsRBumUywvb0NgiCAw+GAiooKmJiYAKvVioyELMMIfMteLxiNRvay8C
+        mM8CF4BTSGu7C4+BGmpqaAhghIJe5nZ2ehublZCoVCLD0AfX19bDwv19fXMRqNcnluNtjwfus9/mAWiwUNBgOPKQ+9Xq+0tbXF87q6uoyMBUia4aamJjw4OLiIRsJ8kyX/C1Z8fHx
+        8ziSlPS5heZTpxzs62tPJyUlUq9V5OpGcZOOjXFtbywZJyuVyioGBAdnCwsJ7yn9C4FaYZwqrq6tHyKHL5cJIJII0cRxM87GxsdKJeOdCKRehTMKJiuPJkiKEVBFR8q/Kd6YFGR+B
+        v4QUez3w9I0rAAAAAElFTkSuQmCC" />
+
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
+    <style>
+        body {
+            background-color: #000;
+            color: #fff;
+            font-family: "Open Sans";
+            font-weight: 500;
+            text-align: center;
+        }
+
+        .clock-text {
+            color: #FCF55F
+        }
+
+        .error-text {
+            padding: 50px 0;
+        }
+
+        .time-text {
+            font-size: 16vw;
+            font-weight: 600;
+            height: 30vh;
+            line-height: 30vh;
+            padding: 50px 0;
+        }
+
+        .overrun-text {
+            color: #ff0000;
+        }
+
+        .separator {
+            background-color: #fff;
+            border: none;
+            height: 0.5vh;
+            width: 90%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="error" name="error" class="error-text" style="display: none;">
+        <h1>Connection failed.</h1>
+        <p>ProPresenter may not be running or network may not be enabled.<br />Retrying in 60 seconds.</p>
+    </div>
+    <div id="content" name="content" style="display: none;">
+        <div id="clock" name="clock" class="time-text clock-text"></div>
+        <hr id="separator" name="separator" class="separator" />
+        <div id="timer" name="timer" class="time-text"></div>
+    </div>
+</body>
+
+<script>
+    // Update this to your server and port
+    const baseUrl = 'http://<NETWORK-URL-OR-IP>:<NETWORK-PORT>';
+
+    var currentScreenLayout = '';
+
+    fetchWithRetry();
+
+    function displayError(show) {
+        if (show) {
+            document.querySelector("#error").style.display = "block";
+            document.querySelector("#content").style.display = "none";
+        } else {
+            document.querySelector("#content").style.display = "block";
+            document.querySelector("#error").style.display = "none";
+        }
+    }
+
+    function fetchWithRetry() {
+        fetch(baseUrl + '/v1/status/updates', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json;charset=UTF-8' },
+            body: '["timer/system_time", "stage/layout_map", "timers/current"]'
+        }).then(response => {
+            const reader = response.body.getReader();
+
+            displayError(false);
+
+            function readChunk() {
+                reader.read().then(function (result) {
+                    if (!result.done) {
+                        var updates = new TextDecoder("utf-8").decode(result.value);
+                        updates.split('\r\n').filter(item => item.trim() != '').forEach(data => {
+                            try {
+                                var json = JSON.parse(data.trim());
+                            } catch (e) {
+                                return;
+                            }
+
+                            if (json.url == "timer/system_time") {
+                                handleClockUpdate(json.data);
+                            } else if (json.url == "stage/layout_map") {
+                                handleScreenUpdate(json.data);
+                            } else if (json.url == "timers/current") {
+                                handleTimerUpdate(json.data);
+                            }
+                        })
+                        readChunk();
+                    }
+                }).catch(error => {
+                    displayError(true);
+                    wait(60).then(() => fetchWithRetry());
+                })
+            }
+
+            readChunk();
+        }).catch(error => {
+            displayError(true);
+            wait(60).then(() => fetchWithRetry());
+        })
+    }
+
+    function handleClockUpdate(data) {
+        var date = new Date(data * 1000);
+
+        var hours = date.getHours();
+        var minutes = "0" + date.getMinutes();
+        var seconds = "0" + (date.getSeconds() + 1);
+
+        var ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2) + " " + ampm;
+
+        document.querySelector('#clock').innerHTML = formattedTime;
+    }
+
+    // This method only supports the first stage display.
+    // It can be modified to support multiple if needed using data.forEach.
+    function handleScreenUpdate(data) {
+        if (data.length <= 0) {
+            return;
+        }
+
+        currentScreenLayout = data[0].layout.name.toLowerCase();
+    }
+
+    function handleTimerUpdate(data) {
+        if (currentScreenLayout.length <= 0) {
+            // Don't update the timer until we know what stage layout is being shown
+            return;
+        }
+
+        // Update the current timer text based on what stage layout is currently shown
+        if (currentScreenLayout.includes("offering")) {
+            data.filter(item => item.id.name == "Offering").forEach(timer => {
+                document.querySelector('#timer').innerHTML = timer.time;
+            })
+        } else if (currentScreenLayout.includes("p&w")) {
+            data.filter(item => item.id.name == "Praise & Worship").forEach(timer => {
+                document.querySelector('#timer').innerHTML = timer.time;
+            })
+        } else if (currentScreenLayout.includes("announcements")) {
+            data.filter(item => item.id.name == "Announcements").forEach(timer => {
+                document.querySelector('#timer').innerHTML = timer.time;
+            })
+        } else if (currentScreenLayout.includes("prayer")) {
+            data.filter(item => item.id.name == "Prayer").forEach(timer => {
+                document.querySelector('#timer').innerHTML = timer.time;
+            })
+        } else if (currentScreenLayout.includes("sermon")) {
+            data.filter(item => item.id.name == "Sermon").forEach(timer => {
+                document.querySelector('#timer').innerHTML = timer.time;
+            })
+        } else {
+            data.filter(item => item.id.name == "Service").forEach(timer => {
+                document.querySelector('#timer').innerHTML = timer.time;
+            })
+        }
+
+        // If the timer is overrun, show the text in red
+        if (document.querySelector('#timer').innerHTML.startsWith("-")) {
+            document.querySelector('#timer').classList.add("overrun-text");
+        } else {
+            document.querySelector('#timer').classList.remove("overrun-text");
+        }
+    }
+
+    // Delay should be provided in seconds
+    function wait(delay) {
+        return new Promise((resolve) => setTimeout(resolve, delay * 1000));
+    }
+</script>
+
+</html>
